@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donate - StrayConnected</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'donate.css' %}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo">StrayConnected</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'nearby' %}">Help Nearby</a></li>
+            <li><a href="{% url 'donate' %}" class="active">Donate</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Donation Section -->
+    <section class="donate-section">
+        <img src="{% static 'dog8.jpeg' %}" alt="Donate Image" class="full-width-img">
+
+        <div class="donate-text">
+            <h1>Support Our Mission 🐾</h1>
+            <p>Your contribution helps feed, treat, and rescue stray animals.</p>
+
+            <div class="donate-info">
+                <h3>UPI ID: <span style="color: green;">strayconnect@upi</span></h3>
+                <p>Scan the QR or send directly using UPI.</p>
+                
+            </div>
+
+            <p>Even ₹10 can make a big difference. Thank you for your kindness!</p>
+        </div>
+    <div class="qrcode">
+         {% comment %} <img src="{% static 'qr_img.png' %}" alt="qr" class="qr-img"> {% endcomment %}
+
+         <p><strong>Note:</strong> This QR is for demonstration only. No real payment will happen.</p>
+    </div>
+
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 StrayConnected | Built with ❤️ by Priyanshu</p>
+    </footer>
+
+</body>
+</html>

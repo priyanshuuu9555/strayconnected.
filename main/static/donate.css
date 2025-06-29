@@ -1,0 +1,77 @@
+.donate-section {
+    text-align: center;
+    padding: 40px;
+    background-color: #f7f7f7;
+}
+
+.donate-info {
+    margin: 20px 0;
+    font-size: 18px;
+}
+.donate-section {
+    text-align: center;
+    padding: 40px;
+    background-color: #f7f7f7;
+}
+
+
+
+/* Navbar */
+nav {
+    background-color: #d0cfd4;
+    color: rgb(54, 52, 52);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgb(68, 67, 67);
+    font-weight: 500;
+}
+
+.nav-links li a.active,
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+.donate-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.qrcode {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+
+.qrcode img.qr-img {
+    width: 100px !important;        /* Force smaller width */
+    height: 100px !important;       /* Force smaller height */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+

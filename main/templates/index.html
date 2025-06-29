@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - StrayConnected</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo">StrayConnected</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}" class="active">Home</a></li>
+            <li><a href="{% url 'nearby' %}">Help Nearby</a></li>
+            <li><a href="{% url 'donate' %}">Donate</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Image Slider -->
+    <header class="hero">
+    <div class="slider">
+        <img class="slide" src="{% static 'dog1.jpeg' %}">
+        <img class="slide" src="{% static 'dog5.jpeg' %}">
+        <img class="slide" src="{% static 'dog6.jpeg' %}">
+    </div>
+    <div class="hero-text">
+        <h1>Be the Voice for the Voiceless 🐾</h1>
+        <p>Join hands to report, rescue, and support stray animals in your area.</p>
+        <a href="{% url 'report' %}"><button class="btn-primary">Report a Stray</button></a>
+
+
+        
+    </div>
+</header>
+
+
+    <!-- About Section -->
+    <section class="about">
+    <div class="about-container">
+        <h2>About StrayConnected</h2>
+        <p>
+            StrayConnected is a community-driven platform dedicated to helping stray animals in your locality.
+            Whether it's a hungry puppy, an injured dog, or an abandoned cat, our goal is to connect kind-hearted individuals
+            who are ready to help with food, medical care, or even adoption.
+        </p>
+        <p>
+            You can easily report strays by uploading a photo and their location. Nearby volunteers can then reach out,
+            donate, or arrange veterinary assistance. Every small step brings hope to these voiceless souls.
+        </p>
+        <p><strong>Be a part of this mission. Be their voice. 🐾</strong></p>
+    </div>
+
+    <div class="dogg-flex">
+        <img src="{% static 'dog9.jpeg' %}" alt="Stray Dog" class="dog-img">
+        <div class="dog-info">
+            <h2>Helping Stray Animals: A Step Toward Compassion</h2>
+            <p>
+               Every day, thousands of stray animals—especially dogs and cats—are forced to survive in harsh conditions without shelter, clean water, or proper food. They wander the streets searching for scraps, often injured, sick, or simply scared, with no one to turn to. Many of these animals were once pets, abandoned by families who could no longer care for them, while others were born on the streets and have never known the comfort of a loving touch. These voiceless beings rely entirely on the kindness and empathy of people like us. When we take even a small step—whether it's feeding a hungry dog, applying ointment to an injured paw, reporting a sick stray to local volunteers, or simply offering fresh water—we are not just helping them survive, we are restoring their trust in humanity. It is important to remember that compassion does not require wealth or status—it only requires a heart that cares. By working together as a community, we can build a safer, more compassionate environment where no animal is left behind. Each act of kindness, no matter how small, becomes a ripple that can save lives and inspire others. Let us be the reason a tail wags again, a wound heals, or a life is saved. Because in a world full of indifference, being kind to the helpless is the greatest strength we can show.
+               
+            </p>
+            <ul>
+                <li>Donate food, medicines, or money</li>
+                <li>Foster or adopt a stray</li>
+                <li>Raise awareness by sharing their stories</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 StrayConnected | Built with ❤️ by Priyanshu</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{% static 'index.js' %}"></script>
+
+</body>
+</html>

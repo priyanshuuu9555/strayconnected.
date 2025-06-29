@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help Nearby - StrayConnected</title>
+    <link rel="stylesheet" href="{% static 'nearby.css' %}">
+    
+    <!-- ✅ Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- ✅ Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-logo">StrayConnected</div>
+    <ul class="nav-links">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'nearby' %}" class="active">Help Nearby</a></li>
+        <li><a href="{% url 'donate' %}">Donate</a></li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Slider Section -->
+<header class="hero">
+    <div class="slider">
+        <img src="{% static 'dog2.jpeg' %}" class="slide">
+        <img src="{% static 'dog3.jpeg' %}" class="slide">
+        <img src="{% static 'dog4.jpeg' %}" class="slide">
+    </div>
+    <div class="hero-text">
+        <h1>Be the Voice for the Voiceless 🐾</h1>
+        <p>Join hands to report, rescue, and support stray animals in your area.</p>
+    </div>
+</header>
+
+<!-- Nearby Map -->
+<h2 style="text-align: center; margin-top: 40px;">📍 Reported Locations Near You 🗺️</h2>
+<div id="map"></div>
+
+<!-- Slideshow Script -->
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlides() {
+        slides.forEach((slide, index) => {
+            slide.style.display = (index === currentSlide) ? "block" : "none";
+        });
+        currentSlide = (currentSlide + 1) % slides.length;
+        setTimeout(showSlides, 3000);
+    }
+
+    window.onload = showSlides;
+</script>
+
+<!-- Leaflet Map Script -->
+<script>
+    var map = L.map('map').setView([28.6139, 77.2090], 12); // Center: Delhi
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const reports = {{ reports|safe }};
+
+    reports.forEach(function(report) {
+        L.marker([report.latitude, report.longitude])
+         .addTo(map)
+         .bindPopup(`<b>${report.location}</b>`);
+    });
+</script>
+
+</body>
+</html>

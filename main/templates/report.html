@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report a Stray - StrayConnected</title>
+    <link rel="stylesheet" href="{% static 'report.css' %}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-logo">StrayConnected</div>
+    <ul class="nav-links">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'nearby' %}">Help Nearby</a></li>
+        <li><a href="{% url 'donate' %}">Donate</a></li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Upload Section -->
+<section class="upload-section">
+    <h2>📸 Report a Stray Animal</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- Hidden location inputs -->
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+
+        <button type="submit" class="btn-primary">Submit Report</button>
+    </form>
+
+    <p id="location-status" style="color: grey; margin-top: 10px;"></p>
+</section>
+
+<!-- Auto-get user's location -->
+<script>
+    const status = document.getElementById("location-status");
+
+    if (navigator.geolocation) {
+        status.innerText = "🔄 Getting your location...";
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById('latitude').value = position.coords.latitude;
+            document.getElementById('longitude').value = position.coords.longitude;
+            status.innerText = "✅ Location captured successfully.";
+        }, function(error) {
+            status.innerText = "❌ Unable to get location. Please allow location access.";
+            console.error("Error getting location:", error);
+        });
+    } else {
+        status.innerText = "⚠️ Your browser doesn't support location.";
+    }
+</script>
+
+</body>
+</html>
